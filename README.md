@@ -1,10 +1,16 @@
 
 # Información sobre el proyecto
-- Título: Tic Ta Toe
-- Desarrolladores: Filippin Figueroa Indalecio y Gaggio Valentino
-- Contenido: Juego de TaTeTi
-- Tecnologías implementadas: HTML5, CSS3 y JS.
-- Link al sitio: [Tic Tac Toe](https://ucc-labcompu2.github.io/proyecto2022-gaggio-filippin/portada.html)
+*-**Título**: Tic Ta Toe
+*-**Desarrolladores**: Filippin Figueroa Indalecio y Gaggio Valentino
+*-**Contenido**: Juego de TaTeTi
+*-**Tecnologías** implementadas: HTML5, CSS3 y JS.
+*-**Link al sitio**: [Tic Tac Toe](https://ucc-labcompu2.github.io/proyecto2022-gaggio-filippin/portada.html)
+
+| Email | Autores |
+|-------|---------|
+|2113503@ucc.edu.ar|Valentino|
+|2008430@ucc.edu.ar|Indalecio|
+
 
 # proyecto2022
 Estructura de Proyecto Lab de Compu II - 2022
