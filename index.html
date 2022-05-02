@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Images/logo_tictactoe.png" type="image/png">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/tablet.css"
+    media="screen and (min-width: 600px)">
+    <link rel="stylesheet" href="./styles/desktop.css"
+    media="screen and (min-width: 870px)">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+
+    <title>TicTacToe</title>
+</head>
+<body>
+    <header class="header">
+        <figure class="header_fig">
+            <img class="header__fig-icon" src="./images/logo_tictactoe.png" alt="Game Icon">
+        </figure>
+        <h1 class="header__h1">TicTacToe</h1>
+        
+    </header>
+    <section class="section">
+        <aside class="section__aside">
+            <h2 class="section__aside-h2">Jugador 1</h2>
+            <p class="section__aside-simbGame">X</p>
+            <div class="section__div">
+                <p class="section__div-p">Puntuación:</p>
+                <p class="section__div-number-score">0</p>
+            </div>
+        </aside>
+
+        <main class="section__main">
+            <div>
+                <canvas id="myCanvas" width="100%" height="100%" style="border:1px solid #d3d3d3;"></canvas>
+            </div>
+        </main>
+
+        <div class="section__div-mobile">
+            <div class="player-mobile">
+                <p class="player-mobile-p">JUGADOR 1</p>
+                <p>0</p>
+            </div>
+
+            <div class="player-mobile">
+                <p class="player-mobile-p">JUGADOR 2</p>
+                <p>0</p>
+            </div>
+        </div>
+
+        <aside class="section__aside">
+            <h2 class="section__aside-h2">Jugador 2</h2>
+            <p class="section__aside-simbGame">O</p>
+            <div class="section__div">
+                <p class="section__div-p">Puntuación:</p>
+                <p class="section__div-number-score">0</p>
+            </div>
+        </aside>
+
+    </section>
+    
+    <footer class="footer">
+        <nav id="atras">
+            <a type="button" href="portada.html" class="Volver_Atras">&#8249;</a>
+        </nav>
+
+        <button type="button" class="button_start_1">
+            Sortear Partida
+        </button>
+
+        <button type="button" class="button_start">
+            Siguiente Juego
+        </button>
+
+        <button type="button" class="button_start">
+            Reiniciar
+        </button>
+    </footer>
+
+</body>
+</html>
