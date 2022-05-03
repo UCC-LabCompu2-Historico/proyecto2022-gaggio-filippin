@@ -35,7 +35,7 @@ body {
     justify-content: space-around;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"], [class*="icon-"] {
     font-family: 'icomoon';
     speak-as: never;
     font-style: normal;
@@ -45,7 +45,9 @@ body {
     line-height: 1;
     height: 40px;
     width: 40px;
-    margin-left: 97%;
+    position: absolute;
+    right: 15px;
+    top: 15px;
   
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -161,7 +163,7 @@ body {
     color: #545454;
     text-shadow: 2px 2px 5px #8a8a8a, 4px 4px 5px white;
     text-align: center;
-    margin-top: 15%;
+    margin-top: 18%;
 }
 
 .titulo span {
