@@ -26,7 +26,6 @@ body{
     background-color: #2e9095;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     padding-left: 20px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
@@ -34,11 +33,48 @@ body{
 }
 
 .header__h1 {
-    text-align: center;
-    font-family: 'Bauhaus 93' , Source Sans Pro;
+    font-family: sans-serif;
     font-size: 6rem;
-    text-shadow: 0px 1px 0px #5980d0, 0px 2px 0px #3e6db3, 0px 3px 0px #386cb9, 0px 4px 0px #3f6994, 0px 5px 0px #31619c, 0px 6px 0px #265e94, 0px 7px 0px #23518c, 0px 8px 7px #0b3c73;
-    color: rgb(181 230 249);
+    color: #545454;
+    text-shadow: 1.5px 1.5px 4px #8a8a8a, 3px 3px 4px white;
+    margin-left: 30px;
+    display: inline;
+}
+
+.header__h1 span{
+    color: #f2ebd3;
+}
+
+.Volver_Atras{
+    color: #39979c;
+    font-size: 30px;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border: 2px solid #e0e0e0;
+    border-radius: 30%;
+    background: rgb(255, 255, 255);
+    transition: all 350ms ease;
+    text-align: center;
+    box-shadow: 0px 1px 0px #c7c8ca, 0px 2px 0px #b1b3b6, 0px 3px 0px #9d9fa2, 0px 4px 0px #8a8c8e, 0px 5px 0px #77787b, 0px 6px 0px #636466, 0px 7px 0px #4d4d4f, 0px 8px 7px #001135;
+    animation-name: atras;
+    animation-delay: .5s;
+    animation-iteration-count: 8;
+    animation-direction: alternate;
+    animation-duration: .4s;
+}
+
+#atras {
+    margin-left: auto;
+    margin-right: 30px;
+}
+  
+.Volver_Atras:hover{
+    transform: scale(0.95);
+    box-shadow: 0px 1px 0px #c7c8ca, 0px 2px 0px #b1b3b6, 0px 3px 0px #9d9fa2, 0px 4px 0px #8a8c8e, 0px 6px 5px #001135;
+    background-color: rgb(241, 241, 241);
+    text-shadow: 0 4px 6px rgb(100, 100, 100);
 }
 
 .section{
@@ -62,20 +98,12 @@ body{
     padding: 10px 10px;
 }
 
-.section__main-table {
+#myCanvas {
+    display: flex;
     width: 100%;
     height: 100%;
-    border-collapse: collapse;
-}
-
-.section__main-table td{
-    text-align: center;
-    font-size: 4.5rem;
-    width: 33.33333%;
-}
-
-.section__main-table tr{
-    height: 33.33333%;
+    border: 3px solid #3b5758;
+    border-radius: 15px;
 }
 
 .button_sel{
@@ -129,34 +157,6 @@ body{
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     box-shadow: 0px -1px 0px #2c696f, 0px -2px 0px #337173, 0px -3px 0px #3c6e70, 0px -4px 0px #417e80, 0px -5px 0px #398a8d, 0px -6px 0px #4cacb0, 0px -7px 0px #4dbcc0, 0px -8px 7px #5dd3d7;
-}
-
-.Volver_Atras{
-    color: #0e93bb;
-    font-size: 30px;
-    text-decoration: none;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    border: 2px solid #e0e0e0;
-    border-radius: 30%;
-    background: rgb(255, 255, 255);
-    transition: all 350ms ease;
-    text-align: center;
-    margin: 5px 0 0 5px;
-    box-shadow: 0px 1px 0px #c7c8ca, 0px 2px 0px #b1b3b6, 0px 3px 0px #9d9fa2, 0px 4px 0px #8a8c8e, 0px 5px 0px #77787b, 0px 6px 0px #636466, 0px 7px 0px #4d4d4f, 0px 8px 7px #001135;
-    animation-name: atras;
-    animation-delay: .5s;
-    animation-iteration-count: 8;
-    animation-direction: alternate;
-    animation-duration: .4s;
-}
-  
-.Volver_Atras:hover{
-    transform: scale(0.95);
-    box-shadow: 0px 1px 0px #c7c8ca, 0px 2px 0px #b1b3b6, 0px 3px 0px #9d9fa2, 0px 4px 0px #8a8c8e, 0px 6px 5px #001135;
-    background-color: rgb(241, 241, 241);
-    text-shadow: 0 4px 6px rgb(100, 100, 100);
 }
 
 .button_start {
