@@ -95,8 +95,8 @@ body{
     border: 6px solid white;
     border-radius: 20px;
     padding: inherit;
-    max-width: 650px;
-    min-width: 650px;
+    max-width: 672px;
+    width: fit-content;
     height: fit-content;
     margin: auto;
 }
@@ -161,6 +161,28 @@ body{
     height: 200px;
     width: 200px;
     background: #02b3bb;
+}
+
+@media only screen and (max-height: 900px) {
+    .juego-celda {
+        height: 150px;
+        width: 150px;
+    }
+
+    .section__main{
+        max-width: 522px;
+    }
+}
+
+@media only screen and (max-height: 776px) {
+    .juego-celda {
+        height: 120px;
+        width: 120px;
+    }
+
+    .section__main{
+        max-width: 432px;
+    }
 }
 
 .footer {
