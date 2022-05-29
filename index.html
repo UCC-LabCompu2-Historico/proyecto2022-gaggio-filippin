@@ -41,6 +41,17 @@
         </aside>
 
         <main class="section__main">
+            <div class="juego-grid">
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+                <div class="juego-celda"></div>
+            </div>
             <canvas id="myCanvas"></canvas>
         </main>
 
@@ -69,15 +80,15 @@
 
     <footer class="footer">
 
-        <button type="button" class="button_start_1">
+        <button type="button" class="button_start_1" id="ranGame">
             Sortear Partida
         </button>
 
-        <button type="button" class="button_start">
+        <button type="button" onclick="nextGame()" class="button_start" id="nextButton" disabled>
             Siguiente Juego
         </button>
 
-        <button type="button" class="button_start">
+        <button type="button" onclick="resetButton()" class="button_start" id="cleanButton" disabled>
             Reiniciar
         </button>
     </footer>

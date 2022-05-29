@@ -91,19 +91,22 @@ body{
 }
 
 .section__main{
-    width: 100%;
-    height: 70%;
+    display: inline-table;
     border: 6px solid white;
     border-radius: 20px;
-    padding: 10px 10px;
+    padding: inherit;
+    max-width: 650px;
+    min-width: 650px;
+    height: fit-content;
+    margin: auto;
 }
 
 #myCanvas {
-    display: flex;
     width: 100%;
     height: 100%;
     border: 3px solid #3b5758;
     border-radius: 15px;
+    display: none;
 }
 
 .button_sel{
@@ -143,6 +146,21 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+
+.juego-grid {
+    display: grid;
+    background: #2e9095;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+    position: inherit;
+}
+
+.juego-celda {
+    height: 200px;
+    width: 200px;
+    background: #02b3bb;
 }
 
 .footer {
