@@ -112,8 +112,7 @@ const handleCellClick = (e) => {
   }
 };
 
-
-// event listeners
+// llamadas de eventos
 reiniciarDiv.addEventListener('click', rondaReset);
 
 for (const celdaDiv of celdaDivs) {
