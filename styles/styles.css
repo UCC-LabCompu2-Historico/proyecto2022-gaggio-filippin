@@ -45,6 +45,26 @@ body{
     color: #f2ebd3;
 }
 
+.status-action {
+    display: flex;
+    margin-top: 25px;
+    font-size: 25px;
+    justify-content: space-around;
+    height: 30px;
+  }
+  
+  .status span {
+    color: #F2EBD3;
+  }
+  
+  .reset {
+    cursor: pointer;
+  }
+  
+  .reset:hover {
+    color: #F2EBD3;
+  }
+
 .Volver_Atras{
     color: #39979c;
     font-size: 30px;
@@ -102,10 +122,11 @@ body{
 }
 
 #myCanvas {
-    width: 100%;
-    height: 100%;
+    width: 620px;
+    height: 620px;
     border: 3px solid #3b5758;
     border-radius: 15px;
+    position: absolute;
     display: none;
 }
 
@@ -160,6 +181,9 @@ body{
 .juego-celda {
     height: 200px;
     width: 200px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     background: #02b3bb;
 }
 
@@ -172,6 +196,11 @@ body{
     .section__main{
         max-width: 522px;
     }
+
+    #myCanvas {
+        width: 470px;
+        height: 470px;
+    }
 }
 
 @media only screen and (max-height: 776px) {
@@ -183,6 +212,38 @@ body{
     .section__main{
         max-width: 432px;
     }
+
+    #myCanvas {
+        width: 380px;
+        height: 380px;
+    }
+}
+
+.x,
+.o {
+    cursor: default;
+}
+
+.x::after {
+    content: '×';
+    position: absolute;
+    color: #545454;
+    font-size: 200px;
+    margin-left: 43px;
+    margin-top: -25px;
+}
+
+.o::after {
+    content: '○';
+    position: absolute;
+    color: #F2EBD3;
+    font-size: 225px;
+    margin-left: 38px;
+    margin-top: -44px;
+}
+
+.ganador::after {
+     color: #fea471;
 }
 
 .footer {

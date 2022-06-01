@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="Images/logo_tictactoe.png" type="image/png">
     <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/tablet.css" media="screen and (min-width: 600px)">
-    <link rel="stylesheet" href="./styles/desktop.css" media="screen and (min-width: 870px)">
+    <link rel="stylesheet" href="./styles/tablet.css" media="screen and (min-width: 899px)">
+    <link rel="stylesheet" href="./styles/desktop.css" media="screen and (min-width: 900px)">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Source+Sans+Pro:wght@700&display=swap"
@@ -26,6 +26,7 @@
             <img class="header__fig-icon" src="./images/logo_tictactoe.png" alt="Game Icon">
         </figure>
         <h1 class="header__h1">Tic <span>Tac</span> Toe</h1>
+
         <nav id="atras">
             <a type="button" href="portada.html" class="Volver_Atras">&#8249;</a>
         </nav>
@@ -41,6 +42,7 @@
         </aside>
 
         <main class="section__main">
+            <canvas id="myCanvas"></canvas>
             <div class="juego-grid">
                 <div class="juego-celda"></div>
                 <div class="juego-celda"></div>
@@ -52,7 +54,6 @@
                 <div class="juego-celda"></div>
                 <div class="juego-celda"></div>
             </div>
-            <canvas id="myCanvas"></canvas>
         </main>
 
         <div class="section__div-mobile">
@@ -84,14 +85,16 @@
             Sortear Partida
         </button>
 
-        <button type="button" onclick="nextGame()" class="button_start" id="nextButton" disabled>
+        <button type="button" onclick="nextGame()" class="button_start" id="estado">
             Siguiente Juego
         </button>
 
-        <button type="button" onclick="resetButton()" class="button_start" id="cleanButton" disabled>
+        <button type="button" onclick="resetButton()" class="button_start" id="reiniciar">
             Reiniciar
         </button>
     </footer>
+
+    <script src="scripts/app.js"></script>
 
 </body>
 
