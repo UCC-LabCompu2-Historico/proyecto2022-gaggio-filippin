@@ -187,38 +187,6 @@ body{
     background: #02b3bb;
 }
 
-@media only screen and (max-height: 900px) {
-    .juego-celda {
-        height: 150px;
-        width: 150px;
-    }
-
-    .section__main{
-        max-width: 522px;
-    }
-
-    #myCanvas {
-        width: 470px;
-        height: 470px;
-    }
-}
-
-@media only screen and (max-height: 776px) {
-    .juego-celda {
-        height: 120px;
-        width: 120px;
-    }
-
-    .section__main{
-        max-width: 432px;
-    }
-
-    #myCanvas {
-        width: 380px;
-        height: 380px;
-    }
-}
-
 .x,
 .o {
     cursor: default;
@@ -330,4 +298,60 @@ body{
 .start_button{
     width: 120px;
     font-size: 2rem;
+}
+
+@media only screen and (max-height: 900px) {
+    .juego-celda {
+        height: 150px;
+        width: 150px;
+    }
+
+    .section__main{
+        max-width: 522px;
+    }
+
+    #myCanvas {
+        width: 470px;
+        height: 470px;
+    }
+
+    .x::after {
+        font-size: 160px;
+        margin-left: 30px;
+        margin-top: -26px;
+    }
+    
+    .o::after {
+        font-size: 195px;
+        margin-left: 20px;
+        margin-top: -50px;
+    }
+}
+
+@media only screen and (max-height: 776px) {
+    .juego-celda {
+        height: 120px;
+        width: 120px;
+    }
+
+    .section__main{
+        max-width: 432px;
+    }
+
+    #myCanvas {
+        width: 380px;
+        height: 380px;
+    }
+
+    .x::after {
+        font-size: 150px;
+        margin-left: 17px;
+        margin-top: -35px;
+    }
+    
+    .o::after {
+        font-size: 190px;
+        margin-left: 7px;
+        margin-top: -63px;
+    }
 }
