@@ -114,8 +114,11 @@ body{
     display: inline-table;
     border: 6px solid white;
     border-radius: 20px;
+    background: #2f9095;
     padding: inherit;
-    max-width: 672px;
+    max-width: 670px;
+    min-width: 670px;
+    min-height: 670px;
     width: fit-content;
     height: fit-content;
     margin: auto;
@@ -124,10 +127,11 @@ body{
 #myCanvas {
     width: 620px;
     height: 620px;
-    border: 3px solid #3b5758;
-    border-radius: 15px;
     position: absolute;
-    display: none;
+}
+
+.mostrar {
+    display: block;
 }
 
 .button_sel{
@@ -172,6 +176,7 @@ body{
 .juego-grid {
     display: grid;
     background: #2e9095;
+    border-radius: 15px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 10px;
@@ -181,10 +186,24 @@ body{
 .juego-celda {
     height: 200px;
     width: 200px;
+    border-radius: 15px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     background: #02b3bb;
+    transition: all 300ms ease;
+}
+
+.juego-celda:hover {
+    background: #20c1c9;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px black;
+}
+
+.import {
+    background: #02b3bb !important;
+    box-shadow: 0 0 0 !important;
+    transform: scale(1) !important;
 }
 
 .x,
@@ -239,6 +258,8 @@ body{
     font-weight: bold;
     margin-left: 20px;
     box-shadow: 0px 0px 9px #293030;
+    cursor: pointer;
+    transition: all 400ms ease;
 }
 
 .button_start_1 {
@@ -251,6 +272,20 @@ body{
     font-size: 1.4rem;
     font-weight: bold;
     box-shadow: 0px 0px 9px #293030;
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.button_start:hover, .button_start_1:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 18px #222727;
+    background-color: #f9e7b8;
+}
+
+.button_start:active, .button_start_1:active {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 13.5px #222727;
+    background-color: #dac899;
 }
 
 .modal-container{
@@ -300,6 +335,10 @@ body{
     font-size: 2rem;
 }
 
+.hidden {
+    display: none;
+}
+
 @media only screen and (max-height: 900px) {
     .juego-celda {
         height: 150px;
@@ -308,6 +347,8 @@ body{
 
     .section__main{
         max-width: 522px;
+        min-width: 522px;
+        min-height: 522px;
     }
 
     #myCanvas {
@@ -336,6 +377,8 @@ body{
 
     .section__main{
         max-width: 432px;
+        min-width: 432px;
+        min-height: 432px;
     }
 
     #myCanvas {
