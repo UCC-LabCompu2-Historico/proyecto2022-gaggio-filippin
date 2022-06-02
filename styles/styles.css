@@ -197,7 +197,7 @@ body{
 .juego-celda:hover {
     background: #20c1c9;
     transform: scale(1.05);
-    box-shadow: 0 0 15px black;
+    box-shadow: 0 0 20px black;
 }
 
 .import {

@@ -35,7 +35,7 @@ const elGanador = (letter) => {
     ctx.textAlign  = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "rgb(217, 209, 180, 1)";
-    ctx.font = "70px Source Sans Pro";
+    ctx.font = "45px Source Sans Pro";
     ctx.fillText( "EL GANADOR ES X", canvas.width/2, canvas.height/2);
     },800);
 
@@ -55,7 +55,7 @@ const elGanador = (letter) => {
       ctx.textAlign  = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = "rgb(217, 209, 180, 1)";
-      ctx.font = "70px Source Sans Pro";
+      ctx.font = "45px Source Sans Pro";
       ctx.fillText( "EL GANADOR ES O", canvas.width/2, canvas.height/2);
       },800);
   }
@@ -131,7 +131,7 @@ const checkEstadoJuego = () => {
       ctx.textAlign  = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = "rgb(217, 209, 180, 1)";
-      ctx.font = "70px Source Sans Pro";
+      ctx.font = "45px Source Sans Pro";
       ctx.fillText( "ES UN EMPATE", canvas.width/2, canvas.height/2);
       },800);
   } else {
