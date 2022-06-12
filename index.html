@@ -34,7 +34,7 @@
     <section class="section">
         <aside class="section__aside">
             <h2 class="section__aside-h2">Jugador 1</h2>
-            <p class="section__aside-simbGame">X</p>
+            <p class="section__aside-simbGame" id="jugador1">X</p>
             <div class="section__div">
                 <p class="section__div-p">Puntuación:</p>
                 <p class="section__div-number-score" id="puntos1">0</p>
@@ -42,7 +42,7 @@
         </aside>
 
         <main class="section__main">
-            <canvas id="myCanvas" class="hidden"></canvas> <!--La aplicacion del estilo en linea es necesario para el correcto funconamiento del canvas-->
+            <canvas id="myCanvas" class="hidden"></canvas>
             <div class="juego-grid" id="juego">
                 <div class="juego-celda"></div>
                 <div class="juego-celda"></div>
@@ -70,7 +70,7 @@
 
         <aside class="section__aside">
             <h2 class="section__aside-h2">Jugador 2</h2>
-            <p class="section__aside-simbGame">O</p>
+            <p class="section__aside-simbGame" id="jugador2">O</p>
             <div class="section__div">
                 <p class="section__div-p">Puntuación:</p>
                 <p class="section__div-number-score" id="puntos2">0</p>
@@ -81,8 +81,8 @@
 
     <footer class="footer">
 
-        <button type="button" class="button_start_1" id="ranGame">
-            Sortear Partida
+        <button type="button" id="cambioPeon">
+            Cambiar Peon
         </button>
 
         <button type="button" class="button_start" id="rondaSig">

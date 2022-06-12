@@ -2,6 +2,9 @@
 const sigRonda = document.querySelector('#rondaSig')
 const reiniciarDiv = document.querySelector('#reiniciar');
 const celdaDivs = document.querySelectorAll('.juego-celda');
+const cambiarPeon = document.querySelector('#cambioPeon')
+let jugador1 = document.getElementById("jugador1");
+let jugador2 = document.getElementById("jugador2");
 let puntosJug1 = document.getElementById("puntos1");
 let puntosJug2 = document.getElementById("puntos2");
 
@@ -12,6 +15,7 @@ const oSimbolo = '○';
 // variables del juego
 let jugando = true;
 let turnoX = true;
+let estado = false;
 var puntosDe1 = 0;
 var puntosDe2 = 0;
 
@@ -19,12 +23,31 @@ var puntosDe2 = 0;
 // funciones
 const letraASimbolo = (letter) => letter === 'x' ? xSimbolo : oSimbolo;
 
-const elGanador = (letter) => {
+const cambioDeJugador = () => {
+  if (jugador1.innerHTML === "X") {
+    jugador1.innerHTML = 'O';
+    jugador2.innerHTML = 'X';
+  } else {
+    jugador1.innerHTML = 'X';
+    jugador2.innerHTML = 'O';
+  }
+}
 
+const elGanador = (letter) => {
   jugando = false;
+
+  cambiarPeon.addEventListener('click', cambioDeJugador);
+  cambiarPeon.classList.add('button_start_1');
+  cambiarPeon.style.opacity = '100%';
+
   if (letter === 'x') {
-    puntosDe1++;
-    puntosJug1.innerHTML = puntosDe1;
+    if (jugador1.innerHTML === "X") {
+      puntosDe1++;
+      puntosJug1.innerHTML = puntosDe1;
+    } else {
+      puntosDe2++;
+      puntosJug2.innerHTML = puntosDe2;
+    }
 
     setTimeout(function(){
     document.getElementById('myCanvas').classList.remove('hidden');
@@ -45,8 +68,19 @@ const elGanador = (letter) => {
     },1000);
 
   } else {
-    puntosDe2++;
-    puntosJug2.innerHTML = puntosDe2;
+    jugando = false;
+
+    cambiarPeon.addEventListener('click', cambioDeJugador);
+    cambiarPeon.classList.add('button_start_1');
+    cambiarPeon.style.opacity = '100%';
+
+    if (jugador1.innerHTML === "O") {
+      puntosDe1++;
+      puntosJug1.innerHTML = puntosDe1;
+    } else {
+      puntosDe2++;
+      puntosJug2.innerHTML = puntosDe2;
+    }
 
     setTimeout(function(){
       document.getElementById('myCanvas').classList.remove('hidden');
@@ -67,10 +101,6 @@ const elGanador = (letter) => {
       },1000);
   }
 };
-
-const cambioDeJugador = () => {
-
-}
 
 const checkEstadoJuego = () => {
   const topLeft = celdaDivs[0].classList[1];
@@ -142,7 +172,11 @@ const checkEstadoJuego = () => {
     },100);
   } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && middleRight && bottomLeft && bottomMiddle && bottomRight) {
     jugando = false;
-    
+
+    cambiarPeon.addEventListener('click', cambioDeJugador);
+    cambiarPeon.classList.add('button_start_1');
+    cambiarPeon.style.opacity = '100%';
+
     setTimeout(function(){
       document.getElementById('myCanvas').classList.remove('hidden');
       document.getElementById('juego').classList.add('opacidad');
@@ -173,8 +207,13 @@ const partidaReset = () => {
   turnoX = true;
   puntosDe1 = 0;
   puntosDe2 = 0;
+  jugador1.innerHTML = 'X';
+  jugador2.innerHTML = 'O';
   puntosJug1.innerHTML = puntosDe1;
   puntosJug2.innerHTML = puntosDe2;
+  cambiarPeon.removeEventListener('click', cambioDeJugador);
+  cambiarPeon.classList.remove('button_start_1');
+  cambiarPeon.style.opacity = '60%';
   for (const celdaDiv of celdaDivs) {
     celdaDiv.classList.remove('x');
     celdaDiv.classList.remove('o');
@@ -189,6 +228,9 @@ const rondaReset = () => {
   document.getElementById('myCanvas').classList.add('hidden');
   document.getElementById('juego').classList.remove('opacidad');
   turnoX = true;
+  cambiarPeon.removeEventListener('click', cambioDeJugador);
+  cambiarPeon.classList.remove('button_start_1');
+  cambiarPeon.style.opacity = '60%';
   for (const celdaDiv of celdaDivs) {
     celdaDiv.classList.remove('x');
     celdaDiv.classList.remove('o');
