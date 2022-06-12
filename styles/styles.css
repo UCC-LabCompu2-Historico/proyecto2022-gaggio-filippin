@@ -122,6 +122,7 @@ body{
     width: fit-content;
     height: fit-content;
     margin: auto;
+    box-shadow: 0 0 30px #0f3e41;
 }
 
 #myCanvas {
@@ -181,6 +182,7 @@ body{
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 10px;
     position: inherit;
+    transition: all 500ms ease;
 }
 
 .juego-celda {
@@ -209,6 +211,7 @@ body{
 .x,
 .o {
     cursor: default;
+    transition: all 800ms ease;
 }
 
 .x::after {
@@ -218,6 +221,7 @@ body{
     font-size: 200px;
     margin-left: 43px;
     margin-top: -25px;
+    transition: all 800ms ease;
 }
 
 .o::after {
@@ -227,10 +231,11 @@ body{
     font-size: 225px;
     margin-left: 38px;
     margin-top: -44px;
+    transition: all 800ms ease;
 }
 
 .ganador::after {
-     color: #fea471;
+    color: #fea471;
 }
 
 .footer {
@@ -288,48 +293,6 @@ body{
     background-color: #dac899;
 }
 
-.modal-container{
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-}
-
-.modal{
-    width: 60%;
-    height: 70%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 10px 10px;
-    position: relative;
-    transition: transform 1s;
-    transform: translateY(0%);
-}
-
-.modal-close{
-    transform: translateY(-200%)
-}
-
-.modal img{
-    width: 30%;
-}
-
-.modal-text{
-    font-size: 1.5rem;
-    color: tomato;
-    text-align: center;
-}
-
 .start_button{
     width: 120px;
     font-size: 2rem;
@@ -337,6 +300,10 @@ body{
 
 .hidden {
     display: none;
+}
+
+.opacidad {
+    opacity: 0%;
 }
 
 @media only screen and (max-height: 900px) {

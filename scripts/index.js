@@ -1,7 +1,9 @@
 // Elementos HTML
-const estadoDiv = document.querySelector('#estado');
+const sigRonda = document.querySelector('#rondaSig')
 const reiniciarDiv = document.querySelector('#reiniciar');
 const celdaDivs = document.querySelectorAll('.juego-celda');
+let puntosJug1 = document.getElementById("puntos1");
+let puntosJug2 = document.getElementById("puntos2");
 
 // constantes del juego
 const xSimbolo = '×';
@@ -10,6 +12,8 @@ const oSimbolo = '○';
 // variables del juego
 let jugando = true;
 let turnoX = true;
+var puntosDe1 = 0;
+var puntosDe2 = 0;
 
 
 // funciones
@@ -19,11 +23,12 @@ const elGanador = (letter) => {
 
   jugando = false;
   if (letter === 'x') {
-    estadoDiv.innerHTML = `X ES GANADOR!`;
+    puntosDe1++;
+    puntosJug1.innerHTML = puntosDe1;
 
     setTimeout(function(){
     document.getElementById('myCanvas').classList.remove('hidden');
-    document.getElementById('juego').classList.add('hidden');
+    document.getElementById('juego').classList.add('opacidad');
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     var s = getComputedStyle(canvas);
@@ -37,13 +42,15 @@ const elGanador = (letter) => {
     ctx.fillStyle = "rgb(217, 209, 180, 1)";
     ctx.font = "45px Source Sans Pro";
     ctx.fillText( "EL GANADOR ES X", canvas.width/2, canvas.height/2);
-    },800);
+    },1000);
 
   } else {
-    estadoDiv.innerHTML = `<span>O ES GANADOR!</span>`;
+    puntosDe2++;
+    puntosJug2.innerHTML = puntosDe2;
+
     setTimeout(function(){
       document.getElementById('myCanvas').classList.remove('hidden');
-      document.getElementById('juego').classList.add('hidden');
+      document.getElementById('juego').classList.add('opacidad');
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
       var s = getComputedStyle(canvas);
@@ -57,9 +64,13 @@ const elGanador = (letter) => {
       ctx.fillStyle = "rgb(217, 209, 180, 1)";
       ctx.font = "45px Source Sans Pro";
       ctx.fillText( "EL GANADOR ES O", canvas.width/2, canvas.height/2);
-      },800);
+      },1000);
   }
 };
+
+const cambioDeJugador = () => {
+
+}
 
 const checkEstadoJuego = () => {
   const topLeft = celdaDivs[0].classList[1];
@@ -75,51 +86,66 @@ const checkEstadoJuego = () => {
   // checkear ganador
   if (topLeft && topLeft === topMiddle && topLeft === topRight) {
     elGanador(topLeft);
-    celdaDivs[0].classList.add('ganador');
-    celdaDivs[1].classList.add('ganador');
-    celdaDivs[2].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[0].classList.add('ganador');
+      celdaDivs[1].classList.add('ganador');
+      celdaDivs[2].classList.add('ganador');
+    },100);
   } else if (middleLeft && middleLeft === middleMiddle && middleLeft === middleRight) {
     elGanador(middleLeft);
-    celdaDivs[3].classList.add('ganador');
-    celdaDivs[4].classList.add('ganador');
-    celdaDivs[5].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[3].classList.add('ganador');
+      celdaDivs[4].classList.add('ganador');
+      celdaDivs[5].classList.add('ganador');
+    },100);
   } else if (bottomLeft && bottomLeft === bottomMiddle && bottomLeft === bottomRight) {
     elGanador(bottomLeft);
-    celdaDivs[6].classList.add('ganador');
-    celdaDivs[7].classList.add('ganador');
-    celdaDivs[8].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[6].classList.add('ganador');
+      celdaDivs[7].classList.add('ganador');
+      celdaDivs[8].classList.add('ganador');
+    },100);
   } else if (topLeft && topLeft === middleLeft && topLeft === bottomLeft) {
     elGanador(topLeft);
-    celdaDivs[0].classList.add('ganador');
-    celdaDivs[3].classList.add('ganador');
-    celdaDivs[6].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[0].classList.add('ganador');
+      celdaDivs[3].classList.add('ganador');
+      celdaDivs[6].classList.add('ganador');
+    },100);
   } else if (topMiddle && topMiddle === middleMiddle && topMiddle === bottomMiddle) {
     elGanador(topMiddle);
-    celdaDivs[1].classList.add('ganador');
-    celdaDivs[4].classList.add('ganador');
-    celdaDivs[7].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[1].classList.add('ganador');
+      celdaDivs[4].classList.add('ganador');
+      celdaDivs[7].classList.add('ganador');
+    },100);
   } else if (topRight && topRight === middleRight && topRight === bottomRight) {
     elGanador(topRight);
-    celdaDivs[2].classList.add('ganador');
-    celdaDivs[5].classList.add('ganador');
-    celdaDivs[8].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[2].classList.add('ganador');
+      celdaDivs[5].classList.add('ganador');
+      celdaDivs[8].classList.add('ganador');
+    },100);
   } else if (topLeft && topLeft === middleMiddle && topLeft === bottomRight) {
     elGanador(topLeft);
-    celdaDivs[0].classList.add('ganador');
-    celdaDivs[4].classList.add('ganador');
-    celdaDivs[8].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[0].classList.add('ganador');
+      celdaDivs[4].classList.add('ganador');
+      celdaDivs[8].classList.add('ganador');
+    },100);
   } else if (topRight && topRight === middleMiddle && topRight === bottomLeft) {
     elGanador(topRight);
-    celdaDivs[2].classList.add('ganador');
-    celdaDivs[4].classList.add('ganador');
-    celdaDivs[6].classList.add('ganador');
+    setTimeout(function(){
+      celdaDivs[2].classList.add('ganador');
+      celdaDivs[4].classList.add('ganador');
+      celdaDivs[6].classList.add('ganador');
+    },100);
   } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && middleRight && bottomLeft && bottomMiddle && bottomRight) {
     jugando = false;
-    estadoDiv.innerHTML = 'EMPATE!';
     
     setTimeout(function(){
       document.getElementById('myCanvas').classList.remove('hidden');
-      document.getElementById('juego').classList.add('hidden');
+      document.getElementById('juego').classList.add('opacidad');
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
       var s = getComputedStyle(canvas);
@@ -133,19 +159,22 @@ const checkEstadoJuego = () => {
       ctx.fillStyle = "rgb(217, 209, 180, 1)";
       ctx.font = "45px Source Sans Pro";
       ctx.fillText( "ES UN EMPATE", canvas.width/2, canvas.height/2);
-      },800);
+      },1000);
   } else {
     turnoX = !turnoX;
   }
 };
 
 
-// evento de rondas
-const rondaReset = () => {
+// evento para reiniciar la partida
+const partidaReset = () => {
   document.getElementById('myCanvas').classList.add('hidden');
-  document.getElementById('juego').classList.remove('hidden');
+  document.getElementById('juego').classList.remove('opacidad');
   turnoX = true;
-  estadoDiv.innerHTML = 'Siguiente Juego';
+  puntosDe1 = 0;
+  puntosDe2 = 0;
+  puntosJug1.innerHTML = puntosDe1;
+  puntosJug2.innerHTML = puntosDe2;
   for (const celdaDiv of celdaDivs) {
     celdaDiv.classList.remove('x');
     celdaDiv.classList.remove('o');
@@ -155,7 +184,21 @@ const rondaReset = () => {
   jugando = true;
 };
 
-const handleCellClick = (e) => {
+// evento para continuar con la siguiente ronda
+const rondaReset = () => {
+  document.getElementById('myCanvas').classList.add('hidden');
+  document.getElementById('juego').classList.remove('opacidad');
+  turnoX = true;
+  for (const celdaDiv of celdaDivs) {
+    celdaDiv.classList.remove('x');
+    celdaDiv.classList.remove('o');
+    celdaDiv.classList.remove('import');
+    celdaDiv.classList.remove('ganador');
+  }
+  jugando = true;
+};
+
+const celdaClickeada = (e) => {
   const classList = e.target.classList;
 
   if (!jugando || classList[1] === 'x' || classList[1] === 'o') {
@@ -174,8 +217,10 @@ const handleCellClick = (e) => {
 };
 
 // llamadas de eventos
-reiniciarDiv.addEventListener('click', rondaReset);
+reiniciarDiv.addEventListener('click', partidaReset);
+
+sigRonda.addEventListener('click', rondaReset);
 
 for (const celdaDiv of celdaDivs) {
-  celdaDiv.addEventListener('click', handleCellClick)
+  celdaDiv.addEventListener('click', celdaClickeada);
 }
