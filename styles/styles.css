@@ -193,6 +193,7 @@ body{
     align-items: center;
     cursor: pointer;
     background: #02b3bb;
+    z-index: 3;
     transition: all 300ms ease;
 }
 
@@ -206,6 +207,7 @@ body{
     background: #02b3bb !important;
     box-shadow: 0 0 0 !important;
     transform: scale(1) !important;
+    z-index: 1 !important;
 }
 
 .x,
@@ -218,6 +220,7 @@ body{
     content: '×';
     position: absolute;
     color: #545454;
+    z-index: 2;
     font-size: 200px;
     margin-left: 43px;
     margin-top: -25px;
