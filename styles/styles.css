@@ -150,30 +150,6 @@ body{
     font-size: 4.5rem;
 }
 
-.section__div-mobile{
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-}
-
-.player-mobile-p{
-    font-size: 1.8rem;
-}
-
-.player-mobile{
-    width: 40%;
-    height: 100px;
-    border: 2px solid white;
-    border-radius: 20px;
-    background: linear-gradient(#63abf3, black);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
 .juego-grid {
     display: grid;
     background: #2e9095;
@@ -203,11 +179,14 @@ body{
     box-shadow: 0 0 20px black;
 }
 
-.import {
-    background: #02b3bb !important;
-    box-shadow: 0 0 0 !important;
-    transform: scale(1) !important;
-    z-index: 1 !important;
+.celdaDesactivada {
+    z-index: 1;
+}
+
+.celdaDesactivada:hover {
+    background: #02b3bb;
+    transform: scale(1);
+    box-shadow: 0 0 0;
 }
 
 .x,
@@ -231,6 +210,7 @@ body{
     content: '○';
     position: absolute;
     color: #F2EBD3;
+    z-index: 2;
     font-size: 225px;
     margin-left: 38px;
     margin-top: -44px;
@@ -255,7 +235,7 @@ body{
     box-shadow: 0px -1px 0px #2c696f, 0px -2px 0px #337173, 0px -3px 0px #3c6e70, 0px -4px 0px #417e80, 0px -5px 0px #398a8d, 0px -6px 0px #4cacb0, 0px -7px 0px #4dbcc0, 0px -8px 7px #5dd3d7;
 }
 
-.button_start {
+.boton2-3 {
     height: 40px;
     width: 200px;
     border-radius: 10px;
@@ -270,7 +250,7 @@ body{
     transition: all 400ms ease;
 }
 
-#cambioPeon {
+.boton1 {
     height: 40px;
     width: 200px;
     border-radius: 10px;
@@ -280,26 +260,24 @@ body{
     font-size: 1.4rem;
     font-weight: bold;
     box-shadow: 0px 0px 9px #293030;
-    cursor: pointer;
     opacity: 60%;
     transition: all 400ms ease;
 }
 
-.button_start:hover, .button_start_1:hover {
+.botonCambioPeon{
+    cursor: pointer;
+}
+
+.boton2-3:hover, .botonCambioPeon:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 18px #222727 !important;
-    background-color: #f9e7b8 !important;
+    box-shadow: 0px 0px 18px #222727;
+    background-color: #f9e7b8;
 }
 
-.button_start:active, .button_start_1:active {
+.boton2-3:active, .botonCambioPeon:active {
     transform: scale(1.05);
-    box-shadow: 0px 0px 13.5px #222727 !important;
-    background-color: #dac899 !important;
-}
-
-.start_button{
-    width: 120px;
-    font-size: 2rem;
+    box-shadow: 0px 0px 13.5px #222727;
+    background-color: #dac899;
 }
 
 .hidden {

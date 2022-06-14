@@ -15,7 +15,6 @@ const oSimbolo = '○';
 // variables del juego
 let jugando = true;
 let turnoX = true;
-let estado = false;
 var puntosDe1 = 0;
 var puntosDe2 = 0;
 
@@ -37,11 +36,11 @@ const elGanador = (letter) => {
   jugando = false;
 
   cambiarPeon.addEventListener('click', cambioDeJugador);
-  cambiarPeon.classList.add('button_start_1');
+  cambiarPeon.classList.add('botonCambioPeon');
   cambiarPeon.style.opacity = '100%';
 
   if (letter === 'x') {
-    if (jugador1.innerHTML === "X") {
+    if (jugador1.innerHTML === "X") {  //Si el jugador 1 es juega con "X", el se ganara el punto. De lo contrario el jugador 2 ganara el punto.
       puntosDe1++;
       puntosJug1.innerHTML = puntosDe1;
     } else {
@@ -60,10 +59,10 @@ const elGanador = (letter) => {
     canvas.width = w.split('px')[0];
     canvas.height = h.split('px')[0];
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.textAlign  = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "rgb(217, 209, 180, 1)";
-    ctx.font = "45px Source Sans Pro";
+    ctx.textAlign  = "center"; //Para alinear el canvas
+    ctx.textBaseline = "middle"; //Para alinear el canvas
+    ctx.fillStyle = "rgb(217, 209, 180, 1)";    //Color de letra
+    ctx.font = "45px Source Sans Pro";  //Letra de la libreria de Roboto
     ctx.fillText( "EL GANADOR ES X", canvas.width/2, canvas.height/2);
     },1000);
 
@@ -71,10 +70,10 @@ const elGanador = (letter) => {
     jugando = false;
 
     cambiarPeon.addEventListener('click', cambioDeJugador);
-    cambiarPeon.classList.add('button_start_1');
+    cambiarPeon.classList.add('botonCambioPeon');
     cambiarPeon.style.opacity = '100%';
 
-    if (jugador1.innerHTML === "O") {
+    if (jugador1.innerHTML === "O") {  //Si el jugador 1 es juega con "O", el se ganara el punto. De lo contrario el jugador 2 ganara el punto.
       puntosDe1++;
       puntosJug1.innerHTML = puntosDe1;
     } else {
@@ -174,7 +173,7 @@ const checkEstadoJuego = () => {
     jugando = false;
 
     cambiarPeon.addEventListener('click', cambioDeJugador);
-    cambiarPeon.classList.add('button_start_1');
+    cambiarPeon.classList.add('botonCambioPeon');
     cambiarPeon.style.opacity = '100%';
 
     setTimeout(function(){
@@ -212,12 +211,12 @@ const partidaReset = () => {
   puntosJug1.innerHTML = puntosDe1;
   puntosJug2.innerHTML = puntosDe2;
   cambiarPeon.removeEventListener('click', cambioDeJugador);
-  cambiarPeon.classList.remove('button_start_1');
+  cambiarPeon.classList.remove('botonCambioPeon');
   cambiarPeon.style.opacity = '60%';
   for (const celdaDiv of celdaDivs) {
     celdaDiv.classList.remove('x');
     celdaDiv.classList.remove('o');
-    celdaDiv.classList.remove('import');
+    celdaDiv.classList.remove('celdaDesactivada');
     celdaDiv.classList.remove('ganador');
   }
   jugando = true;
@@ -229,31 +228,31 @@ const rondaReset = () => {
   document.getElementById('juego').classList.remove('opacidad');
   turnoX = true;
   cambiarPeon.removeEventListener('click', cambioDeJugador);
-  cambiarPeon.classList.remove('button_start_1');
+  cambiarPeon.classList.remove('botonCambioPeon');
   cambiarPeon.style.opacity = '60%';
   for (const celdaDiv of celdaDivs) {
     celdaDiv.classList.remove('x');
     celdaDiv.classList.remove('o');
-    celdaDiv.classList.remove('import');
+    celdaDiv.classList.remove('celdaDesactivada');
     celdaDiv.classList.remove('ganador');
   }
   jugando = true;
 };
 
 const celdaClickeada = (e) => {
-  const classList = e.target.classList;
+  const ubicClase = e.target.classList;
 
-  if (!jugando || classList[1] === 'x' || classList[1] === 'o') {
+  if (!jugando || ubicClase[1] === 'x' || ubicClase[1] === 'o') { // Indica
     return;
   }
 
   if (turnoX) {
-    classList.add('x');
-    classList.add('import');
+    ubicClase.add('x');
+    ubicClase.add('celdaDesactivada');
     checkEstadoJuego();
   } else {
-    classList.add('o');
-    classList.add('import');
+    ubicClase.add('o');
+    ubicClase.add('celdaDesactivada');
     checkEstadoJuego();
   }
 };
