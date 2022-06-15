@@ -21,7 +21,7 @@ var puntosDe2 = 0;
 
 // funciones
 const cambioDeJugador = () => {
-  if (jugador1.innerHTML === "X") {
+  if (jugador1.innerHTML === "X") { //Al precionar el boton de Cambio de peon, si el jugador 1 tiene la "X", pasara a tener el "O", y el jugador 2 tendra la "X". En caso de ser al reves pasara lo contrario.
     jugador1.innerHTML = 'O';
     jugador2.innerHTML = 'X';
   } else {
@@ -33,12 +33,12 @@ const cambioDeJugador = () => {
 const elGanador = (letter) => {
   jugando = false;
 
-  cambiarPeon.addEventListener('click', cambioDeJugador);
-  cambiarPeon.classList.add('botonCambioPeon');
-  cambiarPeon.style.opacity = '100%';
+  cambiarPeon.addEventListener('click', cambioDeJugador); //Añade la posibilidad de hacer click en el boton para cambiar peon.
+  cambiarPeon.classList.add('botonCambioPeon'); //Agregamos esta clase para que el boton posea los mismos estilos que los demas botones al pasar el cursor sobre él.
+  cambiarPeon.style.opacity = '100%'; //Cambia la opacidad del boton "Cambiar Peon" para hacer entender al jugador que está activo.
 
   if (letter === 'x') {
-    if (jugador1.innerHTML === "X") {  //Si el jugador 1 es juega con "X", el se ganara el punto. De lo contrario el jugador 2 ganara el punto.
+    if (jugador1.innerHTML === "X") {  //Si el jugador 1 es quien juega con "X", el se ganara el punto. De lo contrario el jugador 2 ganara el punto.
       puntosDe1++;
       puntosJug1.innerHTML = puntosDe1;
     } else {
@@ -46,21 +46,26 @@ const elGanador = (letter) => {
       puntosJug2.innerHTML = puntosDe2;
     }
 
-    setTimeout(function(){
-    document.getElementById('myCanvas').classList.remove('hidden');
-    document.getElementById('juego').classList.add('opacidad');
-    var canvas = document.getElementById("myCanvas");
+    setTimeout(function(){ //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
+    document.getElementById('myCanvas').classList.remove('hidden'); //Eliminamos la clase hidden en el canvas para hacerlo visible.
+    document.getElementById('juego').classList.add('opacidad'); //Agregamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
+    var canvas = document.getElementById("myCanvas"); //Generamos el canvas.
     var ctx = canvas.getContext("2d");
+
+    //Nos permite obtener los valores de las propiedades ancho y alto en CSS, devolviendo un objeto que poesee los estilos del elemento. Esto nos permite calcular el ancho y alto del canvas en CSS.
     var s = getComputedStyle(canvas);
     var w = s.width;
     var h = s.height;
+
+    //El alto y ancho del elemento canvas vienen en píxeles así que obtenemos su valor usando el método split. Estos valores los asignamos a los valores de canvas.width y canvas.height. Esto permite modificar los valores de las propiedades de alto y ancho en html para que se adapte de forma responsiva a los valores en CSS.
     canvas.width = w.split('px')[0];
     canvas.height = h.split('px')[0];
+
     ctx.clearRect(0,0,canvas.width,canvas.height);
     ctx.textAlign  = "center"; //Para alinear el canvas
     ctx.textBaseline = "middle"; //Para alinear el canvas
-    ctx.fillStyle = "rgb(217, 209, 180, 1)";    //Color de letra
-    ctx.font = "45px Source Sans Pro";  //Letra de la libreria de Roboto
+    ctx.fillStyle = "rgb(217, 209, 180, 1)"; //Color de letra
+    ctx.font = "45px Source Sans Pro"; //Letra de la libreria de Roboto
     ctx.fillText( "EL GANADOR ES X", canvas.width/2, canvas.height/2);
     },1000);
 
@@ -71,7 +76,7 @@ const elGanador = (letter) => {
     cambiarPeon.classList.add('botonCambioPeon');
     cambiarPeon.style.opacity = '100%';
 
-    if (jugador1.innerHTML === "O") {  //Si el jugador 1 es juega con "O", el se ganara el punto. De lo contrario el jugador 2 ganara el punto.
+    if (jugador1.innerHTML === "O") { //Si el jugador 1 es quien juega con "O", el se ganara el punto. De lo contrario el jugador 2 ganara el punto.
       puntosDe1++;
       puntosJug1.innerHTML = puntosDe1;
     } else {
@@ -79,7 +84,7 @@ const elGanador = (letter) => {
       puntosJug2.innerHTML = puntosDe2;
     }
 
-    setTimeout(function(){
+    setTimeout(function(){ //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
       document.getElementById('myCanvas').classList.remove('hidden');
       document.getElementById('juego').classList.add('opacidad');
       var canvas = document.getElementById("myCanvas");
@@ -100,7 +105,7 @@ const elGanador = (letter) => {
 };
 
 const checkEstadoJuego = () => {
-  const topLeft = celdaDivs[0].classList[1];
+  const topLeft = celdaDivs[0].classList[1]; //Creamos una constante para almacenar cada celda del grid y su valor en la segunda clase.
   const topMiddle = celdaDivs[1].classList[1];
   const topRight = celdaDivs[2].classList[1];
   const middleLeft = celdaDivs[3].classList[1];
@@ -111,10 +116,10 @@ const checkEstadoJuego = () => {
   const bottomRight = celdaDivs[8].classList[1];
 
   // checkear ganador
-  if (topLeft && topLeft === topMiddle && topLeft === topRight) {
+  if (topLeft && topLeft === topMiddle && topLeft === topRight) { //Se comparan las celdas para saber si el valor de la clase es el mismo. En tal caso, sera el ganador.
     elGanador(topLeft);
     setTimeout(function(){
-      celdaDivs[0].classList.add('ganador');
+      celdaDivs[0].classList.add('ganador'); //A las 3 celdas que posean el mismo valor de clase, se les agregara la clase "ganador" para luego diferenciar las celdas ganadoras.
       celdaDivs[1].classList.add('ganador');
       celdaDivs[2].classList.add('ganador');
     },100);
@@ -235,7 +240,7 @@ const rondaReset = () => {
 
   cambiarPeon.removeEventListener('click', cambioDeJugador); //Elimina la posibilidad de hacer click en el boton para cambiar peon.
   cambiarPeon.classList.remove('botonCambioPeon'); //Eliminamos esta clase para diferenciar que el boton no funcionara al hacer click.
-  cambiarPeon.style.opacity = '60%'; //Cambia la opacidad del peon.
+  cambiarPeon.style.opacity = '60%'; //Cambia la opacidad del boton Cambiar Peon.
 
   for (const celdaDiv of celdaDivs) { //vacia las celdas.
     celdaDiv.classList.remove('x');
