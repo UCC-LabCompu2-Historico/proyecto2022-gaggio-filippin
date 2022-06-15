@@ -18,7 +18,6 @@ let turnoX = true;
 var puntosDe1 = 0;
 var puntosDe2 = 0;
 
-
 // funciones
 const cambioDeJugador = () => {
   if (jugador1.innerHTML === "X") { //Al precionar el boton de Cambio de peon, si el jugador 1 tiene la "X", pasara a tener el "O", y el jugador 2 tendra la "X". En caso de ser al reves pasara lo contrario.
@@ -46,28 +45,28 @@ const elGanador = (letter) => {
       puntosJug2.innerHTML = puntosDe2;
     }
 
-    setTimeout(function(){ //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
-    document.getElementById('myCanvas').classList.remove('hidden'); //Eliminamos la clase hidden en el canvas para hacerlo visible.
-    document.getElementById('juego').classList.add('opacidad'); //Agregamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
-    var canvas = document.getElementById("myCanvas"); //Generamos el canvas.
-    var ctx = canvas.getContext("2d");
+    setTimeout(function () { //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
+      document.getElementById('myCanvas').classList.remove('hidden'); //Eliminamos la clase hidden en el canvas para hacerlo visible.
+      document.getElementById('juego').classList.add('opacidad'); //Agregamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
+      var canvas = document.getElementById("myCanvas"); //Generamos el canvas.
+      var ctx = canvas.getContext("2d");
 
-    //Nos permite obtener los valores de las propiedades ancho y alto en CSS, devolviendo un objeto que poesee los estilos del elemento. Esto nos permite calcular el ancho y alto del canvas en CSS.
-    var s = getComputedStyle(canvas);
-    var w = s.width;
-    var h = s.height;
+      //Nos permite obtener los valores de las propiedades ancho y alto en CSS, devolviendo un objeto que poesee los estilos del elemento. Esto nos permite calcular el ancho y alto del canvas en CSS.
+      var s = getComputedStyle(canvas);
+      var w = s.width;
+      var h = s.height;
 
-    //El alto y ancho del elemento canvas vienen en píxeles así que obtenemos su valor usando el método split. Estos valores los asignamos a los valores de canvas.width y canvas.height. Esto permite modificar los valores de las propiedades de alto y ancho en html para que se adapte de forma responsiva a los valores en CSS.
-    canvas.width = w.split('px')[0];
-    canvas.height = h.split('px')[0];
+      //El alto y ancho del elemento canvas vienen en píxeles así que obtenemos su valor usando el método split. Estos valores los asignamos a los valores de canvas.width y canvas.height. Esto permite modificar los valores de las propiedades de alto y ancho en html para que se adapte de forma responsiva a los valores en CSS.
+      canvas.width = w.split('px')[0];
+      canvas.height = h.split('px')[0];
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.textAlign  = "center"; //Para alinear el canvas
-    ctx.textBaseline = "middle"; //Para alinear el canvas
-    ctx.fillStyle = "rgb(217, 209, 180, 1)"; //Color de letra
-    ctx.font = "45px Source Sans Pro"; //Letra de la libreria de Roboto
-    ctx.fillText( "EL GANADOR ES X", canvas.width/2, canvas.height/2);
-    },1000);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.textAlign = "center"; //Para alinear el canvas
+      ctx.textBaseline = "middle"; //Para alinear el canvas
+      ctx.fillStyle = "rgb(217, 209, 180, 1)"; //Color de letra
+      ctx.font = "45px Source Sans Pro"; //Letra de la libreria de Roboto
+      ctx.fillText("EL GANADOR ES X", canvas.width / 2, canvas.height / 2);
+    }, 1000);
 
   } else {
     jugando = false;
@@ -84,7 +83,7 @@ const elGanador = (letter) => {
       puntosJug2.innerHTML = puntosDe2;
     }
 
-    setTimeout(function(){ //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
+    setTimeout(function () { //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
       document.getElementById('myCanvas').classList.remove('hidden');
       document.getElementById('juego').classList.add('opacidad');
       var canvas = document.getElementById("myCanvas");
@@ -94,13 +93,13 @@ const elGanador = (letter) => {
       var h = s.height;
       canvas.width = w.split('px')[0];
       canvas.height = h.split('px')[0];
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.textAlign  = "center";
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = "rgb(217, 209, 180, 1)";
       ctx.font = "45px Source Sans Pro";
-      ctx.fillText( "EL GANADOR ES O", canvas.width/2, canvas.height/2);
-      },1000);
+      ctx.fillText("EL GANADOR ES O", canvas.width / 2, canvas.height / 2);
+    }, 1000);
   }
 };
 
@@ -118,60 +117,60 @@ const checkEstadoJuego = () => {
   // checkear ganador
   if (topLeft && topLeft === topMiddle && topLeft === topRight) { //Se comparan las celdas para saber si el valor de la clase es el mismo. En tal caso, sera el ganador.
     elGanador(topLeft);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[0].classList.add('ganador'); //A las 3 celdas que posean el mismo valor de clase, se les agregara la clase "ganador" para luego diferenciar las celdas ganadoras.
       celdaDivs[1].classList.add('ganador');
       celdaDivs[2].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (middleLeft && middleLeft === middleMiddle && middleLeft === middleRight) {
     elGanador(middleLeft);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[3].classList.add('ganador');
       celdaDivs[4].classList.add('ganador');
       celdaDivs[5].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (bottomLeft && bottomLeft === bottomMiddle && bottomLeft === bottomRight) {
     elGanador(bottomLeft);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[6].classList.add('ganador');
       celdaDivs[7].classList.add('ganador');
       celdaDivs[8].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (topLeft && topLeft === middleLeft && topLeft === bottomLeft) {
     elGanador(topLeft);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[0].classList.add('ganador');
       celdaDivs[3].classList.add('ganador');
       celdaDivs[6].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (topMiddle && topMiddle === middleMiddle && topMiddle === bottomMiddle) {
     elGanador(topMiddle);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[1].classList.add('ganador');
       celdaDivs[4].classList.add('ganador');
       celdaDivs[7].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (topRight && topRight === middleRight && topRight === bottomRight) {
     elGanador(topRight);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[2].classList.add('ganador');
       celdaDivs[5].classList.add('ganador');
       celdaDivs[8].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (topLeft && topLeft === middleMiddle && topLeft === bottomRight) {
     elGanador(topLeft);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[0].classList.add('ganador');
       celdaDivs[4].classList.add('ganador');
       celdaDivs[8].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (topRight && topRight === middleMiddle && topRight === bottomLeft) {
     elGanador(topRight);
-    setTimeout(function(){
+    setTimeout(function () {
       celdaDivs[2].classList.add('ganador');
       celdaDivs[4].classList.add('ganador');
       celdaDivs[6].classList.add('ganador');
-    },100);
+    }, 100);
   } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle && middleRight && bottomLeft && bottomMiddle && bottomRight) {
     jugando = false;
 
@@ -179,7 +178,7 @@ const checkEstadoJuego = () => {
     cambiarPeon.classList.add('botonCambioPeon');
     cambiarPeon.style.opacity = '100%';
 
-    setTimeout(function(){
+    setTimeout(function () {
       document.getElementById('myCanvas').classList.remove('hidden');
       document.getElementById('juego').classList.add('opacidad');
       var canvas = document.getElementById("myCanvas");
@@ -189,13 +188,13 @@ const checkEstadoJuego = () => {
       var h = s.height;
       canvas.width = w.split('px')[0];
       canvas.height = h.split('px')[0];
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.textAlign  = "center";
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = "rgb(217, 209, 180, 1)";
       ctx.font = "45px Source Sans Pro";
-      ctx.fillText( "ES UN EMPATE", canvas.width/2, canvas.height/2);
-      },1000);
+      ctx.fillText("ES UN EMPATE", canvas.width / 2, canvas.height / 2);
+    }, 1000);
   } else {
     turnoX = !turnoX; //En caso de que no haya ganador y queden celdas disponibles le toca al siguiente jugador.
   }
@@ -255,7 +254,7 @@ const celdaClickeada = (e) => {
   const ubicClase = e.target.classList; //Almacenamos las claces de la celda clickeada en una constante.
 
   if (!jugando || ubicClase[1] === 'x' || ubicClase[1] === 'o') { //Sirbe para no poder volver a seleccionar una celda completada anteriormente.
-    return;                                                     
+    return;
   }
 
   if (turnoX) {  //Si es el turno de "X" se agregara una "X" al hacer click.
