@@ -20,8 +20,6 @@ var puntosDe2 = 0;
 
 
 // funciones
-const letraASimbolo = (letter) => letter === 'x' ? xSimbolo : oSimbolo;
-
 const cambioDeJugador = () => {
   if (jugador1.innerHTML === "X") {
     jugador1.innerHTML = 'O';
@@ -194,26 +192,32 @@ const checkEstadoJuego = () => {
       ctx.fillText( "ES UN EMPATE", canvas.width/2, canvas.height/2);
       },1000);
   } else {
-    turnoX = !turnoX;
+    turnoX = !turnoX; //En caso de que no haya ganador y queden celdas disponibles le toca al siguiente jugador.
   }
 };
 
 
 // evento para reiniciar la partida
 const partidaReset = () => {
-  document.getElementById('myCanvas').classList.add('hidden');
-  document.getElementById('juego').classList.remove('opacidad');
-  turnoX = true;
-  puntosDe1 = 0;
+  document.getElementById('myCanvas').classList.add('hidden'); //Agregamos la clase hidden en el canvas para ocultarlo.
+  document.getElementById('juego').classList.remove('opacidad'); //Quitamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
+
+  turnoX = true; //Hacemos que vuelva a iniciar "X" en todas las rondas.
+
+  puntosDe1 = 0; //Volvemos a 0 los puntajes de los jugadores.
   puntosDe2 = 0;
-  jugador1.innerHTML = 'X';
+
+  jugador1.innerHTML = 'X'; //Hacemos que el jugador 1 siempre inicie con la "X".
   jugador2.innerHTML = 'O';
-  puntosJug1.innerHTML = puntosDe1;
+
+  puntosJug1.innerHTML = puntosDe1; //Se muestra el puntaje de los jugadores (0).
   puntosJug2.innerHTML = puntosDe2;
-  cambiarPeon.removeEventListener('click', cambioDeJugador);
-  cambiarPeon.classList.remove('botonCambioPeon');
-  cambiarPeon.style.opacity = '60%';
-  for (const celdaDiv of celdaDivs) {
+
+  cambiarPeon.removeEventListener('click', cambioDeJugador); //Elimina la posibilidad de hacer click en el boton para cambiar peon.
+  cambiarPeon.classList.remove('botonCambioPeon'); //Eliminamos esta clase para diferenciar que el boton no funcionara al hacer click.
+  cambiarPeon.style.opacity = '60%'; //Cambia la opacidad del peon.
+
+  for (const celdaDiv of celdaDivs) { //vacia las celdas
     celdaDiv.classList.remove('x');
     celdaDiv.classList.remove('o');
     celdaDiv.classList.remove('celdaDesactivada');
@@ -224,13 +228,16 @@ const partidaReset = () => {
 
 // evento para continuar con la siguiente ronda
 const rondaReset = () => {
-  document.getElementById('myCanvas').classList.add('hidden');
-  document.getElementById('juego').classList.remove('opacidad');
-  turnoX = true;
-  cambiarPeon.removeEventListener('click', cambioDeJugador);
-  cambiarPeon.classList.remove('botonCambioPeon');
-  cambiarPeon.style.opacity = '60%';
-  for (const celdaDiv of celdaDivs) {
+  document.getElementById('myCanvas').classList.add('hidden'); //Agregamos la clase hidden en el canvas para ocultarlo.
+  document.getElementById('juego').classList.remove('opacidad'); //Quitamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
+
+  turnoX = true; //Hacemos que vuelva a iniciar "X" en todas las rondas.
+
+  cambiarPeon.removeEventListener('click', cambioDeJugador); //Elimina la posibilidad de hacer click en el boton para cambiar peon.
+  cambiarPeon.classList.remove('botonCambioPeon'); //Eliminamos esta clase para diferenciar que el boton no funcionara al hacer click.
+  cambiarPeon.style.opacity = '60%'; //Cambia la opacidad del peon.
+
+  for (const celdaDiv of celdaDivs) { //vacia las celdas.
     celdaDiv.classList.remove('x');
     celdaDiv.classList.remove('o');
     celdaDiv.classList.remove('celdaDesactivada');
@@ -240,28 +247,28 @@ const rondaReset = () => {
 };
 
 const celdaClickeada = (e) => {
-  const ubicClase = e.target.classList;
+  const ubicClase = e.target.classList; //Almacenamos las claces de la celda clickeada en una constante.
 
-  if (!jugando || ubicClase[1] === 'x' || ubicClase[1] === 'o') { // Indica
-    return;
+  if (!jugando || ubicClase[1] === 'x' || ubicClase[1] === 'o') { //Sirbe para no poder volver a seleccionar una celda completada anteriormente.
+    return;                                                     
   }
 
-  if (turnoX) {
+  if (turnoX) {  //Si es el turno de "X" se agregara una "X" al hacer click.
     ubicClase.add('x');
     ubicClase.add('celdaDesactivada');
     checkEstadoJuego();
-  } else {
+  } else {  //Si es el turno de "O" se agregara un "O" al hacer click.
     ubicClase.add('o');
     ubicClase.add('celdaDesactivada');
     checkEstadoJuego();
   }
 };
 
-// llamadas de eventos
+// llamadas de eventos para los botones
 reiniciarDiv.addEventListener('click', partidaReset);
 
 sigRonda.addEventListener('click', rondaReset);
 
-for (const celdaDiv of celdaDivs) {
+for (const celdaDiv of celdaDivs) { //identifica la celda seleccionada.
   celdaDiv.addEventListener('click', celdaClickeada);
 }
