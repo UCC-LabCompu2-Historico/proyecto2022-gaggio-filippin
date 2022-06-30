@@ -1,5 +1,5 @@
 // Elementos HTML
-const sigRonda = document.querySelector('#rondaSig')
+const sigRonda = document.querySelector('#rondaSig');
 const reiniciarDiv = document.querySelector('#reiniciar');
 const celdaDivs = document.querySelectorAll('.juego-celda');
 const cambiarPeon = document.querySelector('#cambioPeon')
@@ -7,10 +7,6 @@ let jugador1 = document.getElementById("jugador1");
 let jugador2 = document.getElementById("jugador2");
 let puntosJug1 = document.getElementById("puntos1");
 let puntosJug2 = document.getElementById("puntos2");
-
-// constantes del juego
-const xSimbolo = '×';
-const oSimbolo = '○';
 
 // variables del juego
 let jugando = true;
@@ -33,7 +29,7 @@ const elGanador = (letter) => {
   jugando = false;
 
   cambiarPeon.addEventListener('click', cambioDeJugador); //Añade la posibilidad de hacer click en el boton para cambiar peon.
-  cambiarPeon.classList.add('botonCambioPeon'); //Agregamos esta clase para que el boton posea los mismos estilos que los demas botones al pasar el cursor sobre él.
+  cambiarPeon.classList.add('botonActivo'); //Agregamos esta clase para que el boton posea los mismos estilos que los demas botones al pasar el cursor sobre él.
   cambiarPeon.style.opacity = '100%'; //Cambia la opacidad del boton "Cambiar Peon" para hacer entender al jugador que está activo.
 
   if (letter === 'x') {
@@ -44,6 +40,11 @@ const elGanador = (letter) => {
       puntosDe2++;
       puntosJug2.innerHTML = puntosDe2;
     }
+
+    sigRonda.innerHTML = 'Siguiente Ronda';
+    sigRonda.addEventListener('click', rondaReset);
+    sigRonda.classList.add('botonActivo');
+    sigRonda.style.opacity = '100%';
 
     setTimeout(function () { //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
       document.getElementById('myCanvas').classList.remove('hidden'); //Eliminamos la clase hidden en el canvas para hacerlo visible.
@@ -72,7 +73,7 @@ const elGanador = (letter) => {
     jugando = false;
 
     cambiarPeon.addEventListener('click', cambioDeJugador);
-    cambiarPeon.classList.add('botonCambioPeon');
+    cambiarPeon.classList.add('botonActivo');
     cambiarPeon.style.opacity = '100%';
 
     if (jugador1.innerHTML === "O") { //Si el jugador 1 es quien juega con "O", el se ganara el punto. De lo contrario el jugador 2 ganara el punto.
@@ -82,6 +83,11 @@ const elGanador = (letter) => {
       puntosDe2++;
       puntosJug2.innerHTML = puntosDe2;
     }
+
+    sigRonda.innerHTML = 'Siguiente Ronda';
+    sigRonda.addEventListener('click', rondaReset);
+    sigRonda.classList.add('botonActivo');
+    sigRonda.style.opacity = '100%';
 
     setTimeout(function () { //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
       document.getElementById('myCanvas').classList.remove('hidden');
@@ -175,8 +181,13 @@ const checkEstadoJuego = () => {
     jugando = false;
 
     cambiarPeon.addEventListener('click', cambioDeJugador);
-    cambiarPeon.classList.add('botonCambioPeon');
+    cambiarPeon.classList.add('botonActivo');
     cambiarPeon.style.opacity = '100%';
+
+    sigRonda.innerHTML = 'Siguiente Ronda';
+    sigRonda.addEventListener('click', rondaReset);
+    sigRonda.classList.add('botonActivo');
+    sigRonda.style.opacity = '100%';
 
     setTimeout(function () {
       document.getElementById('myCanvas').classList.remove('hidden');
@@ -197,6 +208,12 @@ const checkEstadoJuego = () => {
     }, 1000);
   } else {
     turnoX = !turnoX; //En caso de que no haya ganador y queden celdas disponibles le toca al siguiente jugador.
+
+    if (turnoX === true) {
+      sigRonda.innerHTML = 'Turno de X';
+    } else {
+      sigRonda.innerHTML = 'Turno de O';
+    }
   }
 };
 
@@ -208,6 +225,10 @@ const partidaReset = () => {
 
   turnoX = true; //Hacemos que vuelva a iniciar "X" en todas las rondas.
 
+  sigRonda.innerHTML = 'Turno de X';
+  sigRonda.classList.remove('botonActivo');
+  sigRonda.style.opacity = '60%';
+
   puntosDe1 = 0; //Volvemos a 0 los puntajes de los jugadores.
   puntosDe2 = 0;
 
@@ -218,7 +239,7 @@ const partidaReset = () => {
   puntosJug2.innerHTML = puntosDe2;
 
   cambiarPeon.removeEventListener('click', cambioDeJugador); //Elimina la posibilidad de hacer click en el boton para cambiar peon.
-  cambiarPeon.classList.remove('botonCambioPeon'); //Eliminamos esta clase para diferenciar que el boton no funcionara al hacer click.
+  cambiarPeon.classList.remove('botonActivo'); //Eliminamos esta clase para diferenciar que el boton no funcionara al hacer click.
   cambiarPeon.style.opacity = '60%'; //Cambia la opacidad del peon.
 
   for (const celdaDiv of celdaDivs) { //vacia las celdas
@@ -228,6 +249,7 @@ const partidaReset = () => {
     celdaDiv.classList.remove('ganador');
   }
   jugando = true;
+  sigRonda.removeEventListener('click', rondaReset);
 };
 
 // evento para continuar con la siguiente ronda
@@ -237,8 +259,12 @@ const rondaReset = () => {
 
   turnoX = true; //Hacemos que vuelva a iniciar "X" en todas las rondas.
 
+  sigRonda.innerHTML = 'Turno de X';
+  sigRonda.classList.remove('botonActivo');
+  sigRonda.style.opacity = '60%';
+
   cambiarPeon.removeEventListener('click', cambioDeJugador); //Elimina la posibilidad de hacer click en el boton para cambiar peon.
-  cambiarPeon.classList.remove('botonCambioPeon'); //Eliminamos esta clase para diferenciar que el boton no funcionara al hacer click.
+  cambiarPeon.classList.remove('botonActivo'); //Eliminamos esta clase para diferenciar que el boton no funcionara al hacer click.
   cambiarPeon.style.opacity = '60%'; //Cambia la opacidad del boton Cambiar Peon.
 
   for (const celdaDiv of celdaDivs) { //vacia las celdas.
@@ -248,6 +274,7 @@ const rondaReset = () => {
     celdaDiv.classList.remove('ganador');
   }
   jugando = true;
+  sigRonda.removeEventListener('click', rondaReset);
 };
 
 const celdaClickeada = (e) => {
@@ -270,8 +297,6 @@ const celdaClickeada = (e) => {
 
 // llamadas de eventos para los botones
 reiniciarDiv.addEventListener('click', partidaReset);
-
-sigRonda.addEventListener('click', rondaReset);
 
 for (const celdaDiv of celdaDivs) { //identifica la celda seleccionada.
   celdaDiv.addEventListener('click', celdaClickeada);

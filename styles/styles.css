@@ -214,8 +214,6 @@ body{
     height: 200px;
     width: 200px;
     border-radius: 15px;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     background: #02b3bb;
     z-index: 3;
@@ -284,7 +282,7 @@ body{
     box-shadow: 0px -1px 0px #2c696f, 0px -2px 0px #337173, 0px -3px 0px #3c6e70, 0px -4px 0px #417e80, 0px -5px 0px #398a8d, 0px -6px 0px #4cacb0, 0px -7px 0px #4dbcc0, 0px -8px 7px #5dd3d7;
 }
 
-.boton2-3 {
+.boton3 {
     height: 40px;
     width: 200px;
     border-radius: 10px;
@@ -296,6 +294,21 @@ body{
     margin-left: 20px;
     box-shadow: 0px 0px 9px #293030;
     cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.boton2 {
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    border: none;
+    background-color: #b5f7f9;
+    color: #010703;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-left: 20px;
+    box-shadow: 0px 0px 9px #293030;
+    opacity: 60%;
     transition: all 400ms ease;
 }
 
@@ -313,17 +326,17 @@ body{
     transition: all 400ms ease;
 }
 
-.botonCambioPeon{
+.botonActivo{
     cursor: pointer;
 }
 
-.boton2-3:hover, .botonCambioPeon:hover {
+.boton3:hover, .botonActivo:hover {
     transform: scale(1.1);
     box-shadow: 0px 0px 18px #222727;
     background-color: #f9e7b8;
 }
 
-.boton2-3:active, .botonCambioPeon:active {
+.boton3:active, .botonActivo:active {
     transform: scale(1.05);
     box-shadow: 0px 0px 13.5px #222727;
     background-color: #dac899;
