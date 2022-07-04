@@ -13,6 +13,19 @@ let jugando = true;
 let turnoX = true;
 var puntosDe1 = 0;
 var puntosDe2 = 0;
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+//Nos permite obtener los valores de las propiedades ancho y alto en CSS, devolviendo un objeto que poesee los estilos del elemento. Esto nos permite calcular el ancho y alto del canvas en CSS.
+var s = getComputedStyle(canvas);
+var w = s.width;
+var h = s.height;
+
+//El alto y ancho del elemento canvas vienen en píxeles así que obtenemos su valor usando el método split. Estos valores los asignamos a los valores de canvas.width y canvas.height. Esto permite modificar los valores de las propiedades de alto y ancho en html para que se adapte de forma responsiva a los valores en CSS.
+canvas.width = w.split('px')[0];
+canvas.height = h.split('px')[0];
+let contador=1;
+let contador2=60;
+var aumento;
 
 // funciones
 const cambioDeJugador = () => {
@@ -49,24 +62,32 @@ const elGanador = (letter) => {
     setTimeout(function () { //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
       document.getElementById('myCanvas').classList.remove('hidden'); //Eliminamos la clase hidden en el canvas para hacerlo visible.
       document.getElementById('juego').classList.add('opacidad'); //Agregamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
-      var canvas = document.getElementById("myCanvas"); //Generamos el canvas.
-      var ctx = canvas.getContext("2d");
+      
+      aumento = setInterval(() => {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.textAlign  = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "rgb(217, 209, 180, 1)";
+        ctx.fillText( "EL GANADOR ES X", canvas.width/2, canvas.height/2);
+        
+        if (contador<=60){
+          ctx.font = contador + "px Source Sans Pro";
+          contador = contador + 0.2;
+        }
+        else{
+          if (contador2 >= 10){
+            ctx.font = contador2 + "px Source Sans Pro";
+            contador2 = contador2 - 0.2;
+          }
+        }
 
-      //Nos permite obtener los valores de las propiedades ancho y alto en CSS, devolviendo un objeto que poesee los estilos del elemento. Esto nos permite calcular el ancho y alto del canvas en CSS.
-      var s = getComputedStyle(canvas);
-      var w = s.width;
-      var h = s.height;
+        if (contador2 < 10){
+            contador2=60;
+            contador=10;
+        }
 
-      //El alto y ancho del elemento canvas vienen en píxeles así que obtenemos su valor usando el método split. Estos valores los asignamos a los valores de canvas.width y canvas.height. Esto permite modificar los valores de las propiedades de alto y ancho en html para que se adapte de forma responsiva a los valores en CSS.
-      canvas.width = w.split('px')[0];
-      canvas.height = h.split('px')[0];
+      }, 4);
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.textAlign = "center"; //Para alinear el canvas
-      ctx.textBaseline = "middle"; //Para alinear el canvas
-      ctx.fillStyle = "rgb(217, 209, 180, 1)"; //Color de letra
-      ctx.font = "45px Source Sans Pro"; //Letra de la libreria de Roboto
-      ctx.fillText("EL GANADOR ES X", canvas.width / 2, canvas.height / 2);
     }, 1000);
 
   } else {
@@ -92,19 +113,32 @@ const elGanador = (letter) => {
     setTimeout(function () { //Funcion para agregar una demora de 1s para ejecutar el codigo de su interior.
       document.getElementById('myCanvas').classList.remove('hidden');
       document.getElementById('juego').classList.add('opacidad');
-      var canvas = document.getElementById("myCanvas");
-      var ctx = canvas.getContext("2d");
-      var s = getComputedStyle(canvas);
-      var w = s.width;
-      var h = s.height;
-      canvas.width = w.split('px')[0];
-      canvas.height = h.split('px')[0];
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "rgb(217, 209, 180, 1)";
-      ctx.font = "45px Source Sans Pro";
-      ctx.fillText("EL GANADOR ES O", canvas.width / 2, canvas.height / 2);
+
+      aumento = setInterval(() => {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.textAlign  = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "rgb(217, 209, 180, 1)";
+        ctx.fillText( "EL GANADOR ES O", canvas.width/2, canvas.height/2);
+        
+        if (contador<=60){
+          ctx.font = contador + "px Source Sans Pro";
+          contador = contador + 0.2;
+        }
+        else{
+          if (contador2 >= 10){
+            ctx.font = contador2 + "px Source Sans Pro";
+            contador2 = contador2 - 0.2;
+          }
+        }
+
+        if (contador2 < 10){
+            contador2=60;
+            contador=10;
+        }
+
+      }, 4);
+
     }, 1000);
   }
 };
@@ -192,19 +226,32 @@ const checkEstadoJuego = () => {
     setTimeout(function () {
       document.getElementById('myCanvas').classList.remove('hidden');
       document.getElementById('juego').classList.add('opacidad');
-      var canvas = document.getElementById("myCanvas");
-      var ctx = canvas.getContext("2d");
-      var s = getComputedStyle(canvas);
-      var w = s.width;
-      var h = s.height;
-      canvas.width = w.split('px')[0];
-      canvas.height = h.split('px')[0];
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "rgb(217, 209, 180, 1)";
-      ctx.font = "45px Source Sans Pro";
-      ctx.fillText("ES UN EMPATE", canvas.width / 2, canvas.height / 2);
+
+      aumento = setInterval(() => {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.textAlign  = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "rgb(217, 209, 180, 1)";
+        ctx.fillText( "ES UN EMPATE", canvas.width/2, canvas.height/2);
+        
+        if (contador<=60){
+          ctx.font = contador + "px Source Sans Pro";
+          contador = contador + 0.2;
+        }
+        else{
+          if (contador2 >= 10){
+            ctx.font = contador2 + "px Source Sans Pro";
+            contador2 = contador2 - 0.2;
+          }
+        }
+
+        if (contador2 < 10){
+            contador2=60;
+            contador=10;
+        }
+
+      }, 4);
+
     }, 1000);
   } else {
     turnoX = !turnoX; //En caso de que no haya ganador y queden celdas disponibles le toca al siguiente jugador.
@@ -222,6 +269,9 @@ const checkEstadoJuego = () => {
 const partidaReset = () => {
   document.getElementById('myCanvas').classList.add('hidden'); //Agregamos la clase hidden en el canvas para ocultarlo.
   document.getElementById('juego').classList.remove('opacidad'); //Quitamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
+
+  clearInterval (aumento);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
   turnoX = true; //Hacemos que vuelva a iniciar "X" en todas las rondas.
 
@@ -256,6 +306,9 @@ const partidaReset = () => {
 const rondaReset = () => {
   document.getElementById('myCanvas').classList.add('hidden'); //Agregamos la clase hidden en el canvas para ocultarlo.
   document.getElementById('juego').classList.remove('opacidad'); //Quitamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
+
+  clearInterval (aumento);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
   turnoX = true; //Hacemos que vuelva a iniciar "X" en todas las rondas.
 
