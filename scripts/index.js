@@ -15,6 +15,7 @@ var puntosDe1 = 0;
 var puntosDe2 = 0;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+
 //Nos permite obtener los valores de las propiedades ancho y alto en CSS, devolviendo un objeto que poesee los estilos del elemento. Esto nos permite calcular el ancho y alto del canvas en CSS.
 var s = getComputedStyle(canvas);
 var w = s.width;
@@ -28,8 +29,16 @@ let contador2=60;
 var aumento;
 
 // funciones
+
+/**
+   * Al precionar el boton de Cambio de peon, si el jugador 1 tiene la "X", pasara a tener el "O", y el jugador 2 tendra la "X". En caso de ser al reves pasara lo contrario.
+   * @method cambioDeJugador
+   * @param Parámetro A
+   * @param Parámetro B
+   * @return Nada
+   */
 const cambioDeJugador = () => {
-  if (jugador1.innerHTML === "X") { //Al precionar el boton de Cambio de peon, si el jugador 1 tiene la "X", pasara a tener el "O", y el jugador 2 tendra la "X". En caso de ser al reves pasara lo contrario.
+  if (jugador1.innerHTML === "X") {
     jugador1.innerHTML = 'O';
     jugador2.innerHTML = 'X';
   } else {
@@ -38,6 +47,13 @@ const cambioDeJugador = () => {
   }
 }
 
+/**
+   * Una vez identificado el ganador, esta funcion hace que se deje de mostrar el juego, que se vea el canvas con la animacion, y agrega la posibilidad de clickear los botones que durante el juego estan desabilitados (Cambiar Peon y Siguiente ronda).
+   * @method elGanador
+   * @param {string} letter - Letra que pertenece al ganador
+   * @param Parámetro B
+   * @return Nada
+   */
 const elGanador = (letter) => {
   jugando = false;
 
@@ -143,6 +159,13 @@ const elGanador = (letter) => {
   }
 };
 
+/**
+   * Analiza si hay ganador o si hay empate. En caso de no cumplirse ninguna, significa que quedan celdas vacias, por lo que el juego continua.
+   * @method checkEstadoJuego
+   * @param Parámetro A
+   * @param Parámetro B
+   * @return elGanador - Es la celda que contiene al ganador. En caso de empate la funcion no devuelve ningun valor.
+   */
 const checkEstadoJuego = () => {
   const topLeft = celdaDivs[0].classList[1]; //Creamos una constante para almacenar cada celda del grid y su valor en la segunda clase.
   const topMiddle = celdaDivs[1].classList[1];
@@ -264,8 +287,13 @@ const checkEstadoJuego = () => {
   }
 };
 
-
-// evento para reiniciar la partida
+/**
+   * Al hacer click en el boton de reiniciar, todo lo que se ve en pantalla volvera a su estado inicial.
+   * @method partidaReset
+   * @param Parámetro A
+   * @param Parámetro B
+   * @return Nada
+   */
 const partidaReset = () => {
   document.getElementById('myCanvas').classList.add('hidden'); //Agregamos la clase hidden en el canvas para ocultarlo.
   document.getElementById('juego').classList.remove('opacidad'); //Quitamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
@@ -302,7 +330,13 @@ const partidaReset = () => {
   sigRonda.removeEventListener('click', rondaReset);
 };
 
-// evento para continuar con la siguiente ronda
+/**
+   * Al hacer click en el boton de Siguiente Ronda, unicamente se dejara de mostrar el canvas, para mostrar el tablero del juego vacio para asi volver a jugar y seguir sumando puntos.
+   * @method rondaReset
+   * @param Parámetro A
+   * @param Parámetro B
+   * @return Nada
+   */
 const rondaReset = () => {
   document.getElementById('myCanvas').classList.add('hidden'); //Agregamos la clase hidden en el canvas para ocultarlo.
   document.getElementById('juego').classList.remove('opacidad'); //Quitamos la clase opacidad la cual hace invisible el Grid del juego para ver el canvas.
@@ -330,6 +364,13 @@ const rondaReset = () => {
   sigRonda.removeEventListener('click', rondaReset);
 };
 
+/**
+   * Analiza la celda clickeada, en caso de estar vacia se le agregara el simbolo correspondiente y se desactiva la celda para no poder volver a clickearla, luego procede a llamar a la funcion la cual analiza si hay un ganador.
+   * @method celdaClickeada
+   * @param e - Se utiliza para identificar cuando se produce el evento de click, y asi almacenar los datos de la celda correspondiente para analizarla.
+   * @param Parámetro B
+   * @return Nada
+   */
 const celdaClickeada = (e) => {
   const ubicClase = e.target.classList; //Almacenamos las claces de la celda clickeada en una constante.
 
