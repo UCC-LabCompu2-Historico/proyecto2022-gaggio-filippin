@@ -4,7 +4,7 @@
 * **Desarrolladores:** Filippin Figueroa Indalecio y Gaggio Valentino.
 * **Contenido:** Juego de TaTeTi.
 * **Tecnologías implementadas:** HTML5, CSS3 y JS.
-* **Link al sitio:** [Tic Tac Toe](https://ucc-labcompu2.github.io/proyecto2022-gaggio-filippin/portada.html).
+* **Link al sitio:** [Tic Tac Toe](https://ucc-labcompu2-Historico.github.io/proyecto2022-gaggio-filippin/portada.html).
 
 | Email | Autores |
 |-------|---------|
